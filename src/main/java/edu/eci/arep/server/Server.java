@@ -17,17 +17,19 @@ import java.util.ArrayList;
 
 /**
  * Clase que representa un servidor la cual resuelve solicitudes html,jpg,js.
+ *
  * @author Juan David
  */
 public class Server implements Runnable {
 
     /**
      * Metodo init que inicia el servicio del servidor.
+     *
      * @throws IOException
      * @throws ClassNotFoundException
      * @throws IllegalAccessException
      * @throws IllegalArgumentException
-     * @throws InvocationTargetException 
+     * @throws InvocationTargetException
      */
     public void init() throws IOException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         int port = getPort();
@@ -55,7 +57,7 @@ public class Server implements Runnable {
             inputLine = in.readLine();
             System.out.println("Voy a crear y correr el HILO");
             System.out.println(inputLine + "  <-----DizqueInputLine");
-            RequestHandler rh = new RequestHandler(inputLine,clientSocket);
+            RequestHandler rh = new RequestHandler(inputLine, clientSocket);
             rh.start();
             out.close();
             in.close();
@@ -65,6 +67,7 @@ public class Server implements Runnable {
 
     /**
      * Permite obtener el puerto el cual va a usar el servidor.
+     *
      * @return Retorna el numero del puerto a usar.
      */
     static int getPort() {

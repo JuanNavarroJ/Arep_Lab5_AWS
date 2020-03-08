@@ -14,12 +14,12 @@ import java.util.concurrent.Executors;
  * @author Juan David
  */
 public class ServicePool {
+
     //Atributos
     private static ExecutorService servicePool = Executors.newFixedThreadPool(10);
-    
-    public static void main( String[] args ) throws Exception
-    {
-        Server server=new Server();
+
+    public static void main(String[] args) throws Exception {
+        Server server = new Server();
         server.init();
         servicePool.submit(server);
     }

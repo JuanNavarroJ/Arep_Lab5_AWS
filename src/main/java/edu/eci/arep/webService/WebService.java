@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.eci.arep.WebService;
+
 import edu.eci.arep.annotations.Web;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -16,18 +17,21 @@ import java.io.OutputStream;
 import javax.imageio.ImageIO;
 
 /**
- * Clase WebService la cual por medio de etiquetas pemite la ejecucion de sus funcionalidades.
+ * Clase WebService la cual por medio de etiquetas pemite la ejecucion de sus
+ * funcionalidades.
+ *
  * @author juan.navarro
  */
-
 public class WebService {
+
     /**
      * Metodo que da un recurso HTML al usuario.
+     *
      * @param element Es la ruta donde se encuentra el recurso.
      * @param clientOutput Es quien solicita el recurso.
      */
     @Web
-    public static void html(String element, OutputStream clientOutput){
+    public static void html(String element, OutputStream clientOutput) {
         try {
             String text = "";
             String temp;
@@ -40,16 +44,17 @@ public class WebService {
                     + "\r\n"
                     + text).getBytes());
         } catch (IOException e) {
-        }        
-    }   
-    
+        }
+    }
+
     /**
      * Metodo que da un recurso JPG al usuario.
+     *
      * @param element Es la ruta donde se encuentra el recurso.
      * @param clientOutput Es quien solicita el recurso.
      */
     @Web
-    public static void jpg(String element, OutputStream clientOutput){
+    public static void jpg(String element, OutputStream clientOutput) {
         try {
             BufferedImage image = ImageIO.read(new File(System.getProperty("user.dir") + element));
             ByteArrayOutputStream ArrBytes = new ByteArrayOutputStream();
@@ -62,16 +67,17 @@ public class WebService {
         } catch (IOException e) {
 
         }
-        
-    }  
-    
+
+    }
+
     /**
      * Metodo que da un recurso JS al usuario.
+     *
      * @param element Es la ruta donde se encuentra el recurso.
      * @param clientOutput Es quien solicita el recurso.
      */
     @Web
-    public static void js(String element, OutputStream clientOutput){
+    public static void js(String element, OutputStream clientOutput) {
         try {
             BufferedReader read = new BufferedReader(new FileReader(System.getProperty("user.dir") + element));
             String cont = "";
@@ -84,6 +90,6 @@ public class WebService {
                     + "\r\n"
                     + cont).getBytes());
         } catch (IOException e) {
-        }        
-    }  
+        }
+    }
 }

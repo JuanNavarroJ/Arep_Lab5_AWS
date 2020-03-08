@@ -8,9 +8,9 @@ package edu.eci.arep.annotations;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-
 /**
  * Interface que permite el funcionamiento de la notacion @Web
+ *
  * @author juan.navarro
  */
 @Retention(RetentionPolicy.RUNTIME)
