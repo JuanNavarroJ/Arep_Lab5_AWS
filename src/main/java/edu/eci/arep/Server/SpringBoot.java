@@ -5,7 +5,7 @@
  */
 package edu.eci.arep.Server;
 
-import edu.eci.arep.requestHandler.RequestHandler;
+import edu.eci.arep.annotations.Web;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,40 +13,35 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+import java.lang.reflect.Method;
 
 /**
  * Clase que representa un servidor la cual resuelve solicitudes html,jpg,js.
- *
  * @author Juan David
  */
-public class Server implements Runnable {
+public class SpringBoot implements Runnable {
 
     /**
      * Metodo init que inicia el servicio del servidor.
-     *
      * @throws IOException
      * @throws ClassNotFoundException
      * @throws IllegalAccessException
      * @throws IllegalArgumentException
-     * @throws InvocationTargetException
+     * @throws InvocationTargetException 
      */
     public void init() throws IOException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         int port = getPort();
-        ArrayList<RequestHandler> requestHandlers = new ArrayList<RequestHandler>();
         while (true) {
             ServerSocket serverSocket = null;
             try {
                 serverSocket = new ServerSocket(port);
             } catch (IOException e) {
-                System.out.println("Entra en a");
                 System.exit(1);
             }
             Socket clientSocket = null;
             try {
                 clientSocket = serverSocket.accept();
             } catch (IOException e) {
-                System.out.println("Entra en B");
                 System.exit(1);
             }
             PrintWriter out = new PrintWriter(
@@ -55,19 +50,36 @@ public class Server implements Runnable {
                     new InputStreamReader(clientSocket.getInputStream()));
             String inputLine;
             inputLine = in.readLine();
-            System.out.println("Voy a crear y correr el HILO");
-            System.out.println(inputLine + "  <-----DizqueInputLine");
-            RequestHandler rh = new RequestHandler(inputLine, clientSocket);
-            rh.start();
+            try {
+                String[] listaURL = inputLine.split(" ");
+                String[] get = listaURL[1].split("/");
+                if (listaURL[1].contains("/WebService")) {
+                    Class<?> c = Class.forName("edu.eci.arep.WebService." + get[1]);
+                    for (Method metodo : c.getMethods()) {
+                        if (metodo.isAnnotationPresent(Web.class)) {
+                            String[] ans = get[2].split("[, ?.@]+");
+                            if (metodo.getName().equals(ans[1])) {
+                                metodo.invoke(c, "/src/main/resources/" + get[2], clientSocket.getOutputStream());
+                            }
+                            if (!in.ready()) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+            } catch (NullPointerException e) {
+            } catch (ClassNotFoundException ex) {
+            }
             out.close();
             in.close();
+            clientSocket.close();
             serverSocket.close();
         }
     }
 
     /**
      * Permite obtener el puerto el cual va a usar el servidor.
-     *
      * @return Retorna el numero del puerto a usar.
      */
     static int getPort() {

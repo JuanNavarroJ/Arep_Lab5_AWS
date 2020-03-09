@@ -5,7 +5,7 @@
  */
 package edu.eci.arep.ExecutorService;
 
-import edu.eci.arep.Server.Server;
+import edu.eci.arep.Server.SpringBoot;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -14,13 +14,13 @@ import java.util.concurrent.Executors;
  * @author Juan David
  */
 public class ServicePool {
-
     //Atributos
     private static ExecutorService servicePool = Executors.newFixedThreadPool(10);
-
-    public static void main(String[] args) throws Exception {
-        Server server = new Server();
-        server.init();
-        servicePool.submit(server);
+    
+    public static void main( String[] args ) throws Exception
+    {
+        SpringBoot sb=new SpringBoot();
+        sb.init();
+        servicePool.submit(sb);
     }
 }
