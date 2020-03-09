@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* edu.escuelaing.arep.networking.HttpServer
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* edu.eci.arep.ExecutorService.ServicePool
