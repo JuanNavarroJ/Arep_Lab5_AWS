@@ -1,5 +1,11 @@
 # Taller de de modularización con virtualización e Introducción a AWS
 
+## Instancia EC2 AWS
+
+
+## Documento arquitectura
+
+
 ## Link aplicación web
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://arep-lab5-aws.herokuapp.com/WebService/Web.html)
@@ -18,6 +24,7 @@ Para verificar el funcionamiento tenemos diferentes recursos cargados en el serv
 
 ### Introducción
 
+En este laboratorio se busca conocer y utilizar algunos de los servicios prestados en AWS, en este laboratorio vamos a utilizar el servicio EC2 de AWS en el cual vamos a crear una instancia de una maquina virtual y en ella vamos a probar un cliente concurrente el cual hace solicitudes a nuestro servidor desplegado en heroku. En este laboratorio se utiliza el servidor realizado en laboratorios pasados el cual permite la resolución de archivos con extensiones .jpg, .js y .html
 
 ---
 
@@ -38,7 +45,7 @@ Debemos tener un editor java instalado y git, es opcional tener instalado el uso
 
 ![1](https://user-images.githubusercontent.com/44879884/75121441-fb878300-5661-11ea-91b5-330ef63613a1.PNG)
 
-2. Usando los comandos de git empezamos con : **$ git clone** https://github.com/JuanNavarroJ/Arep_Lab4_ServerWeb e Ingresamos a la carpeta que descargamos desde Github.
+2. Usando los comandos de git empezamos con : **$ git clone** https://github.com/JuanNavarroJ/Arep_Lab5_AWS.git e Ingresamos a la carpeta que descargamos desde Github.
 
 ![2](https://user-images.githubusercontent.com/44879884/75121443-fc201980-5661-11ea-8f00-3088434e741c.PNG)
 
