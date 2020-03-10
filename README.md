@@ -1,10 +1,12 @@
 # Taller de de modularización con virtualización e Introducción a AWS
 
-## Instancia EC2 AWS
+## ¿Como crear una instancia EC2 AWS y ejecutar proyectos?
 
+[TallerAWS](https://github.com/JuanNavarroJ/Arep_Lab5_AWS/blob/master/Lab_5_Arep_TallerAWS.pdf)
 
 ## Documento arquitectura
 
+[Documento](https://github.com/JuanNavarroJ/Arep_Lab5_AWS/blob/master/Lab_5_Arep_Documento.pdf)
 
 ## Link aplicación web
 
